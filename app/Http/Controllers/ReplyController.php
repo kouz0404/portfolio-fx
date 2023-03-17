@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Post;
 use App\Models\Like;
 use App\Models\Reply;
+use App\Models\Notification;
 
 class ReplyController extends Controller
 {
@@ -32,10 +33,14 @@ class ReplyController extends Controller
     
     // フォームに入力される情報
     $body = $request->input('body');
+    $id = $request->input('post_id');
    //ログインしているユーザーIDを取得
     $send_user_id = Auth::id();
 
-    $id = $request->input('post_id');
+    $user_id = Post::where('id', $id)->value('user_id');
+   
+
+ 
 
     Reply::insert(
         [
@@ -45,7 +50,15 @@ class ReplyController extends Controller
            'created_at' => now(),
            'updated_at' => now(),
 
-        ]);   
+        ]); 
+
+        Notification::create([
+            'send_user_id' => Auth::id(),
+            'got_user_id' => $user_id,
+            'message' => 'あなたの投稿に返信をしました。'
+        ]);
+        
+        
         return redirect()->back();
     }
 
