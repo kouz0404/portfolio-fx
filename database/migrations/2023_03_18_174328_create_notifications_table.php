@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateReplysTable extends Migration
+class CreateNotificationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,16 @@ class CreateReplysTable extends Migration
      */
     public function up()
     {
-        Schema::create('replys', function (Blueprint $table) {
+        Schema::create('notifications', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('post_id')->unsigned();
             $table->bigInteger('send_user_id')->unsigned(); 
-            $table->string('body');
+            $table->unsignedInteger('got_user_id'); 
+            $table->bigInteger('reply_id')->unsigned();
+            $table->string('message');
             $table->timestamps();
 
-            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
             $table->foreign('send_user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('reply_id')->references('id')->on('replys')->onDelete('cascade');
         });
     }
 
@@ -32,6 +33,6 @@ class CreateReplysTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('replys');
+        Schema::dropIfExists('notifications');
     }
 }

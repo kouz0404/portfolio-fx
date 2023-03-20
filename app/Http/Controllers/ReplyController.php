@@ -37,12 +37,8 @@ class ReplyController extends Controller
    //ログインしているユーザーIDを取得
     $send_user_id = Auth::id();
 
-    $user_id = Post::where('id', $id)->value('user_id');
    
-
- 
-
-    Reply::insert(
+    Reply::create(
         [
            "body" => $body,
            "post_id" => $id,
@@ -52,11 +48,6 @@ class ReplyController extends Controller
 
         ]); 
 
-        Notification::create([
-            'send_user_id' => Auth::id(),
-            'got_user_id' => $user_id,
-            'message' => 'あなたの投稿に返信をしました。'
-        ]);
         
         
         return redirect()->back();

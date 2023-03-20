@@ -15,4 +15,10 @@ class Notification extends Model
         //外部キーを設定
      return $this->belongsTo('App\Models\User' , 'send_user_id');
     }
+
+    public function reply()
+    {
+        //外部キーを設定
+     return $this->belongsTo('App\Models\Reply' , 'reply_id');
+    }
 }
