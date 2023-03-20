@@ -10,7 +10,7 @@ class Reply extends Model
 
     protected $table = 'replys';
     use HasFactory;
-    protected $fillable = ['body','send_user_id'];
+    protected $fillable = ['body','send_user_id' ,'post_id'];
 
     public function reply()
     {
@@ -21,6 +21,11 @@ class Reply extends Model
     {
         //外部キーを設定
      return $this->belongsTo('App\Models\User' , 'send_user_id');
+    }
+
+    public function notifications()
+    {
+      return $this->hasMany('App\Models\Notification');
     }
 
 
