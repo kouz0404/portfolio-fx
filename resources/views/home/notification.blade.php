@@ -56,7 +56,7 @@
 
                     <div class="post-body">
                         <div class="post-write">
-                            <p class="message">{{$followed->user->name}}に{{$followed->message}}</p>
+                            <p class="message">{{$followed->user->name}}{{$followed->message}}</p>
                         </div>
                     </div>
                 </div>

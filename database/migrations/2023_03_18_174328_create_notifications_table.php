@@ -17,8 +17,9 @@ class CreateNotificationsTable extends Migration
             $table->id();
             $table->bigInteger('send_user_id')->unsigned(); 
             $table->unsignedInteger('got_user_id'); 
-            $table->bigInteger('reply_id')->unsigned();
+            $table->bigInteger('reply_id')->unsigned()->nullable();
             $table->string('message');
+            $table->string('send_user_name')->nullable();
             $table->timestamps();
 
             $table->foreign('send_user_id')->references('id')->on('users')->onDelete('cascade');

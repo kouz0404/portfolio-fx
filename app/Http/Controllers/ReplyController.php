@@ -37,6 +37,8 @@ class ReplyController extends Controller
    //ログインしているユーザーIDを取得
     $send_user_id = Auth::id();
 
+    $got_user_id = Post::where('id' , $id)->value('user_id');
+
    
     Reply::create(
         [
@@ -47,6 +49,16 @@ class ReplyController extends Controller
            'updated_at' => now(),
 
         ]); 
+     
+    //同時に通知も作成
+    $reply_id  = Reply::latest('id')->value('id');
+
+    Notification::create([
+        'send_user_id' => Auth::id(),
+        'got_user_id' => $got_user_id,
+        'reply_id' => $reply_id,
+        'message' => 'があなたの投稿に返信をしました。',
+    ]);
 
         
         

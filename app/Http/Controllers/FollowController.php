@@ -15,6 +15,7 @@ class FollowController extends Controller
     public function follow( User $user)
     {
         $id=$user->id;
+        $send_user_name = $user->name;
   
     Follow::create([
         'user_id' => Auth::id(),
@@ -24,7 +25,8 @@ class FollowController extends Controller
     Notification::create([
         'send_user_id' => Auth::id(),
         'got_user_id' => $id,
-        'message' => 'フォローされました'
+        'send_user_name' => $send_user_name,
+        'message' => 'にフォローされました'
     ]);
 
     return redirect()->back();
@@ -33,10 +35,12 @@ class FollowController extends Controller
     public function unfollow( User $user)
     {
     $id=$user->id;
+    $send_user_name = $user->name;
+
     $follow = Follow::where('follower_id', $id)->where('user_id', Auth::id())->first();
     $follow->delete();
 
-    $notification = Notification::where('got_user_id', $id)->where('send_user_id', Auth::id())->first();
+    $notification = Notification::where('got_user_id', $id)->where('send_user_name', $send_user_name)->first();
     $notification->delete();
 
 

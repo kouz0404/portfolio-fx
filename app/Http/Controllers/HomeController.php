@@ -8,6 +8,7 @@ use App\Models\Post;
 use App\Models\User;
 use App\Models\Like;
 use App\Models\Notification;
+use App\Models\Follow;
 
 
 
@@ -30,7 +31,13 @@ class HomeController extends Controller
     {
         $posts = Post::orderByDesc('created_at')
         ->with('user')->get();
-        return view('home.home', ['posts' => $posts]);
+
+        $followuser = Follow::where('user_id', Auth::id())->value('follower_id');;
+        $followerposts = Post::where('user_id', $followuser)->orderByDesc('created_at')
+        ->with('user')->get();
+
+        return view('home.home', ['posts' => $posts,
+    'followerposts' => $followerposts]);
 
     }
 
@@ -49,7 +56,7 @@ class HomeController extends Controller
      Notification::create([
         'send_user_id' => Auth::id(),
         'got_user_id' => $NTC_id,
-        'message' => 'いいねされました'
+        'message' => 'にいいねされました'
     ]);
 
      return redirect()->back();
@@ -58,7 +65,7 @@ class HomeController extends Controller
      /**
       * LIKEと通知の削除
       */
-     public function unlike(Post $post, Request $request)
+     public function unlike(Post $post,  Request $request)
      {
         $id=$post->id;
         $NTC_id=$post->user_id;
@@ -71,6 +78,7 @@ class HomeController extends Controller
 
      return redirect()->back();
      }
+
 
 
 }
