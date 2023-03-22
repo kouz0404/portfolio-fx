@@ -113,6 +113,8 @@
                             <a href="{{ route('like', $post) }}"><img src="./img/win.png" alt="" class="win"></a>
                             <p>{{ $post->likes->count() }}</p>
                         @endif
+                        <a href="/reply/{{$post->id}}"><img src="../img/reply.png" alt="" class="reply-img"></a>
+                                    <p>{{ $post->replys->count() }}</p>
                         </div>
                     </div>
 
