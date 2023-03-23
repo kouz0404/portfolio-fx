@@ -15,9 +15,9 @@ class CreateReplysTable extends Migration
     {
         Schema::create('replys', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('post_id')->unsigned();
-            $table->bigInteger('send_user_id')->unsigned(); 
-            $table->string('body');
+            $table->bigInteger('post_id')->charset("utf8")->unsigned();
+            $table->bigInteger('send_user_id')->charset("utf8")->unsigned(); 
+            $table->string('body')->charset("utf8");
 
             $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
             $table->foreign('send_user_id')->references('id')->on('users')->onDelete('cascade');
