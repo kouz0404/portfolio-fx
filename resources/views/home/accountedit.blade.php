@@ -19,7 +19,6 @@
      <div class='haikei'>
      <a href="/home"><h1>Tell My FX</h1></a>
     </div>
-
     <div class='home-btn'>
        <a href="/home"><button >ホームに戻る</button></a> 
     </div>
