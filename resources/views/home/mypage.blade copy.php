@@ -1,10 +1,38 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
 
-@section('subtitle')
-<h3>MYPAGE</h3>
-@endsection
 
-@section('content')
+
+
+<body class="all-body">
+
+<div class="header">
+     <div class='haikei'>
+        <a href="/home"><h1>Tell My FX</h1></a>
+    </div>
+
+
+    <div class='login'>
+        @auth
+        <form action="{{ route('logout') }}" method="post">                   
+          @csrf
+         <button type="submit">Logout</button>
+    </form>
+    @endauth
+    </div>
+    
+</div>
+<div class="subtitle">
+<h3>MyPage</h3>
+</div>
+
 <div class="mypage-body">  
 
     <div class="mypage-main">
@@ -85,8 +113,8 @@
                             <a href="{{ route('like', $post) }}"><img src="./img/win.png" alt="" class="win"></a>
                             <p>{{ $post->likes->count() }}</p>
                         @endif
-                            <a href="/reply/{{$post->id}}"><img src="../img/reply.png" alt="" class="reply-img"></a>
-                            <p>{{ $post->replys->count() }}</p>
+                        <a href="/reply/{{$post->id}}"><img src="../img/reply.png" alt="" class="reply-img"></a>
+                                    <p>{{ $post->replys->count() }}</p>
                         </div>
                     </div>
 
@@ -96,6 +124,22 @@
             @endforeach
         @endif
     </div>
-    </div>
+
 </div>
-@endsection
+
+
+
+
+
+
+
+<nav class="footer">
+    <ul>
+        <a href="/home"><li><img  class="footer-img" src="./img/teacher.png" alt=""></li></a>
+        <a href="/post"><li><img  class="footer-img" src="./img/post.png" alt=""></li></a>
+        <a href="/search"><li><img  class="footer-img" src="./img/search.png" alt=""></li></a>
+        <a href="/notification"><li><img  class="footer-img" src="./img/notification.png" alt=""></li></a>
+        <a href="/mypage"><li><img  class="footer-img" src="./img/user.png" alt=""></li></a>
+    </ul>
+    </nav>
+</div>

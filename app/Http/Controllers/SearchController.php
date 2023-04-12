@@ -39,11 +39,8 @@ class SearchController extends Controller
 
             }
 
-
             $posts = $query->paginate(50); //検索結果のユーザーを50件/ページで表示
           
-
-
             //ユーザーモデルからユーザーを検索
             $query = User::query();
             foreach($keywords as $keyword) {

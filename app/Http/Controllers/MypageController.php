@@ -41,10 +41,7 @@ class MypageController extends Controller
             'user' => $user , 
             'follow' => $follow,   
             'follower' => $follower, 
-        ]);
-
-        }
-
+        ]);}
         }
 
     //投稿削除機能を追加

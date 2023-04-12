@@ -8,9 +8,6 @@
     <title>Document</title>
 </head>
 
-
-
-
 <body class="all-body">
 
 
@@ -57,4 +54,6 @@
 
 
 </body>
+
+@endsection
 </html>

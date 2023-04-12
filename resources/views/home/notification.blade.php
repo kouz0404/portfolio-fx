@@ -1,39 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Document</title>
-</head>
+@extends('layouts.app')
 
+@section('subtitle')
+<h3>NOTIFICATIONS</h3>
+@endsection
 
-
-
-<body class="all-body">
-
-<div class="header">
-    <div class='haikei'>
-        <a href="/home"><h1>Tell My FX</h1></a>
-    </div>
-
-
-    <div class='login'>
-        @auth
-        <form action="{{ route('logout') }}" method="post">                   
-        @csrf
-        <button type="submit">Logout</button>
-        </form>
-        @endauth
-    </div>
-    
-</div>
-
-<div class="subtitle">
-    <h3>Notifications</h3>
-</div>
-
+@section('content')
 <div class="mypage-body">  
     <div class="mypage-main">
         <div class="main">
@@ -68,14 +39,6 @@
     
         </div>
     </div>
-
-    <nav class="footer">
-        <ul>
-            <a href="/home"><li><img  class="footer-img" src="./img/teacher.png" alt=""></li></a>
-            <a href="/post"><li><img  class="footer-img" src="./img/post.png" alt=""></li></a>
-            <a href="/search"><li><img  class="footer-img" src="./img/search.png" alt=""></li></a>
-            <a href="/notification"><li><img  class="footer-img" src="./img/notification.png" alt=""></li></a>
-            <a href="/mypage"><li><img  class="footer-img" src="./img/user.png" alt=""></li></a>
-        </ul>
-    </nav>
 </div>
+
+@endsection

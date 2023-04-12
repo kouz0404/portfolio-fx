@@ -8,13 +8,7 @@
     <title>Document</title>
 </head>
 
-
-
-
 <body class="all-body">
-
-
-
 <div class="header">
      <div class='haikei'>
      <a href="/home"><h1>Tell My FX</h1></a>
@@ -59,8 +53,6 @@
                 <input class="user-input" type="password" name="password" placeholder="password">
                 <input class="user-input" type="password"  name="password_confirmation" required autocomplete="new-password" placeholder="confirm password">
                 <button class="login-btn" type="submit"> Make Account</button>
-            
-
             </form>
             </div>
 

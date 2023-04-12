@@ -21,11 +21,7 @@ class ReplyController extends Controller
         $user = User::find($post_id);
         $replys = Reply::where('post_id', $id)->orderByDesc('created_at')->with('user')->get();
 
-
-        return view('home.reply', ['post' => $post , 'user' => $user , 'replys' => $replys]);
-
-        
-
+        return view('home.reply', ['post' => $post , 'user' => $user , 'replys' => $replys]); 
     }
 
     public function create(Request $request)

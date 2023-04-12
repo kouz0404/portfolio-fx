@@ -8,13 +8,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-
-
-
 <body class="all-body">
-
-
-
 <div class="header">
      <div class='haikei'>
      <a href="/home"><h1>Tell My FX</h1></a>
@@ -22,13 +16,13 @@
 
     <div class='home-btn'>
        <a href="/home"><button >ホームに戻る</button></a> 
-</div>
-    
+    </div>
 </div>
 
 <div class="subtitle">
 <h3>Login</h3>
 </div>
+
 {{-- エラーメッセージ --}}
 @if ($errors->any())
     <div class="alert alert-danger">
@@ -39,31 +33,23 @@
     </ul>
     </div>
 @endif
+
 <div class="post-home">
-
     <div class="post-main"> 
-
             <div class="login-form">
-            <form action="{{ url('login') }}" method="post" enctype="multipart/form-data">
-            {{ csrf_field() }}
-                <input class="user-input" type="email" placeholder="email" name="email">
+                <form action="{{ url('login') }}" method="post" enctype="multipart/form-data">
+                {{ csrf_field() }}
+                    <input class="user-input" type="email" placeholder="email" name="email">
 
-                <input  class="user-input" type="password" placeholder="password" name="password">
+                    <input  class="user-input" type="password" placeholder="password" name="password">
 
-                <button class="login-btn" type="submit"> Login</button>
-            
-                <a href="{{ route('register') }}">アカウントを作る</a>
-            </form>
+                    <button class="login-btn" type="submit"> Login</button>
+                
+                    <a href="{{ route('register') }}">アカウントを作る</a>
+                </form>
             </div>
-
-
-
     </div>
-
-
-
-
-
+</div>
 </body>
 </html>
 
