@@ -1,5 +1,3 @@
-
-
 .all-body{
     width: 100%;
     min-height: 1200px;
@@ -16,8 +14,6 @@ a{
     display: flex;
     justify-content: center;
     margin-bottom: 55px;
-
-    
 }
 
 
@@ -81,7 +77,6 @@ h1{
 }
 
 
-
 .each-post{
     background-color:rgba(255, 255, 255, 0.6);
     border-radius:30px;
@@ -91,7 +86,6 @@ h1{
 }
 
 .post{
-    
     width: 100%;
     height: auto;
     display: flex;
@@ -100,8 +94,6 @@ h1{
     border-bottom:  solid 1px rgba(185, 128, 218, 0.7);
     text-align: left;
 }
-
-
 
 .post:last-child{
     border-bottom: none;
@@ -145,7 +137,6 @@ h1{
 }
 
 .delete-post:hover {
-
 	/*--影の複数指定--*/
 	transform: translateY(2px);
 
@@ -300,26 +291,25 @@ nav{
 }
 
 nav ul{
-display: flex;
-list-style: none;
-justify-content: center;
-margin: 0;
-padding: 0;
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
 
 
 }
 
 
 nav ul li{
-width: 100%;
-text-align: center;
-/*--影の複数指定--*/
-transition: .4s;
+    width: 100%;
+    text-align: center;
+    /*--影の複数指定--*/
+    transition: .4s;
 
 }
 
 nav ul li:hover {
-
 	/*--影の複数指定--*/
 	transform: translateY(4px);
 
@@ -335,8 +325,6 @@ nav ul li:hover {
 
 
 /*投稿ページ*/
-
-
 
 .post-home{
     display: flex;
@@ -412,6 +400,8 @@ margin: 0;
 .subtitle h3{
     margin-bottom: 5px;
 }
+
+
 
 /*ログイン機能*/
 .home-btn{

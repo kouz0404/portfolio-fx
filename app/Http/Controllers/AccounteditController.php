@@ -28,7 +28,7 @@ class AccounteditController extends Controller
             'name' => 'required|max:10',
             'nickname' => 'required',
             'email' => 'required',
-            'introduce' => 'string|max:255',
+            'introduce' => 'max:255',
            
         ]);
 
