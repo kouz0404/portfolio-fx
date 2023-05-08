@@ -52,7 +52,7 @@
 
                                 @if(isset($post->image_name))
                                 <div class="post-img">
-                                    <img class="image" src="/storage/{{$post->image_name}}" alt="">
+                                    <img class="image" src="{{$post->image_name}}" alt="">
                                 
                                 <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
                                 <script>
