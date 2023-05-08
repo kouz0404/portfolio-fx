@@ -27,7 +27,9 @@
 
                     <div class="post-body">
                         <div class="post-write">
+                            <p>{{$followed->created_at->format('m月d日H:i')}}</p>
                             <p class="message">{{$followed->user->name}}{{$followed->message}}</p>
+                            
                         </div>
                     </div>
                 </div>
