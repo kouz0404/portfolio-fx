@@ -39,7 +39,7 @@
             {{ csrf_field() }}
                 <div class="account-img">
                 @if(isset($user->image_name))
-                <img src="/storage/{{$user->image_name}}" alt="">
+                <img src="{{$user->image_name}}" alt="">
                 @else
                 <img src="./img/profile.png" alt="">
                 @endif

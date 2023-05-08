@@ -19,7 +19,7 @@
                 <div class="post">
                     <div class="icon">
                         @if(isset($followed->user->image_name))
-                        <a href="/mypage/{{$followed->user->id}}"><img src="/storage/{{$followed->user->image_name}}" alt=""></a>
+                        <a href="/mypage/{{$followed->user->id}}"><img src="{{$followed->user->image_name}}" alt=""></a>
                         @else
                         <a href="/mypage/{{$followed->user->id}}"><img src="./img/profile.png" alt=""></a>
                         @endif

@@ -48,7 +48,7 @@
                 <label for="file_upload">アイコン画像を選ぶ
                 <input id="file_upload" class="user-input" type="file" name="image_name">
                 <input class="user-input"  type="text" name="name" placeholder="AccountName (Taro)">
-                <input class="user-input" type="text" name="nickname" placeholder="nickname (taro@0101)">
+                <input class="user-input" type="text" name="nickname" placeholder="nickname (taro11)">
                 <input class="user-input" type="email" name="email" placeholder="email">
                 <input class="user-input" type="password" name="password" placeholder="password">
                 <input class="user-input" type="password"  name="password_confirmation" required autocomplete="new-password" placeholder="confirm password">

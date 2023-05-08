@@ -14,7 +14,7 @@
         <div class="my-accountbody">
             <div class="account-img">
                 @if(isset($user->image_name))
-                <img src="/storage/{{$user->image_name}}" alt="">
+                <img src="{{$user->image_name}}" alt="">
                 @else
                 <img src="./img/profile.png" alt="">
                 @endif
@@ -22,7 +22,7 @@
 
             <div class="my-accountname">
                 <p>{{$user->name}}<br>
-                {{$user->nickname}}</p>
+                <span>@</span>{{$user->nickname}}</p>
             @if(!isset($user->introduce))
                 <p class="intro-p">自己紹介をしよう</p>
             @endif
@@ -47,7 +47,7 @@
                 <div class="post">
                     <div class="icon">
                         @if(isset($user->image_name))
-                            <img src="/storage/{{$user->image_name}}" alt="">
+                            <img src="{{$user->image_name}}" alt="">
                         @else
                             <img src="./img/profile.png" alt="">
                         @endif
@@ -55,7 +55,7 @@
 
                     <div class="post-body">
                         <div class="acount-name">
-                            <p>{{$user->name}}・{{$user->nickname}}</p>
+                            <p>{{$user->name}}@<span>{{$user->nickname}}　{{$post->created_at->format('m月d日H:i')}}</p>
                             <form action="/delete/{{$post->id}}" method="POST">
                                 {{ csrf_field() }}
                                 <button type="submit" class="delete-post">削除</button>
@@ -68,7 +68,7 @@
                         
                         @if(isset($post->image_name))
                         <div class="post-img">
-                            <img class="image" src="/storage/{{$post->image_name}}" alt="">
+                            <img class="image" src="{{$post->image_name}}" alt="">
                         </div>
                         <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
                         <script>

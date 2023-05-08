@@ -21,7 +21,7 @@
                             <div class="icon">
                                 @auth
                                     @if(isset($post->user->image_name))
-                                        <a href="/mypage/{{$post->user->id}}"><img src="/storage/{{$post->user->image_name}}" alt=""></a>
+                                        <a href="/mypage/{{$post->user->id}}"><img src="{{$post->user->image_name}}" alt=""></a>
                                     @elseif($post->user->image_name === null)
                                         <a href="/mypage/{{$post->user->id}}"><img src="./img/profile.png" alt=""></a>
                                     @endif
@@ -29,7 +29,7 @@
 
                                 @guest
                                     @if(isset($post->user->image_name))
-                                        <img src="/storage/{{$post->user->image_name}}" alt="">
+                                        <img src="{{$post->user->image_name}}" alt="">
                                     @elseif($post->user->image_name === null)
                                         <img src="./img/profile.png" alt="">
                                     @endif
@@ -41,7 +41,7 @@
                             <div class="post-body">
                                 <a href="/reply/{{$post->id}}">
                                 <div class="acount-name">
-                                    <p>{{$post->user->name}}・{{$post->user->nickname}}</p>
+                                    <p>{{$post->user->name}}@<span>{{$post->user->nickname}}</span>　{{$post->created_at->format('m月d日H:i')}}</p>
                                 </div>
 
                                 <div class="post-write">
@@ -94,7 +94,7 @@
                             <div class="icon">
                                 @auth
                                     @if(isset($followerpost->user->image_name))
-                                        <a href="/mypage/{{$followerpost->user->id}}"><img src="/storage/{{$post->user->image_name}}" alt=""></a>
+                                        <a href="/mypage/{{$followerpost->user->id}}"><img src="{{$followerpost->user->image_name}}" alt=""></a>
                                     @elseif($followerpost->user->image_name === null)
                                         <a href="/mypage/{{$followerpost->user->id}}"><img src="./img/profile.png" alt=""></a>
                                     @endif
@@ -102,7 +102,7 @@
 
                                 @guest
                                     @if(isset($followerpost->user->image_name))
-                                        <img src="/storage/{{$followerpost->user->image_name}}" alt="">
+                                        <img src="{{$followerpost->user->image_name}}" alt="">
                                     @elseif($followerpost->user>image_name === null)
                                         <img src="./img/profile.png" alt="">
                                     @endif
@@ -114,7 +114,7 @@
                             <div class="post-body">
                                 <a href="/reply/{{$followerpost->id}}">
                                 <div class="acount-name">
-                                    <p>{{$followerpost->user->name}}・{{$followerpost->user->nickname}}</p>
+                                    <p>{{$followerpost->user->name}}@<span>{{$followerpost->user->nickname}}　{{$post->created_at->format('m月d日H:i')}}</p>
                                 </div>
 
                                 <div class="post-write">
@@ -125,7 +125,7 @@
 
                                 @if(isset($followerpost->image_name))
                                 <div class="post-img">
-                                    <img class="image" src="/storage/{{$followerpost->image_name}}" alt="">
+                                    <img class="image" src="{{$followerpost->image_name}}" alt="">
                                 
                                 <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
                                 <script>
