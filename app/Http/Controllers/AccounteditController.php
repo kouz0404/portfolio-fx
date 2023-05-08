@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Post;
+use Storage;
 
 class AccounteditController extends Controller
 {
@@ -37,14 +38,19 @@ class AccounteditController extends Controller
 
     if($request->has('image_name')){
 
-        $image_extension = $request->file('image_name')->getClientOriginalExtension();
-        $path = $id.'_'.date('YmdHis').'.'.$image_extension;
-          
-    
+        //ローカル環境での画像保存方法
+        //$image_extension = $request->file('image_name')->getClientOriginalExtension();
+        //$path = $id.'_'.date('YmdHis').'.'.$image_extension;
         // 画像を"storage/app/public"に保存
-    $request->file('image_name')->storeAS('',$path,'public');
+    //$request->file('image_name')->storeAS('',$path,'public');
 
-    $user->image_name = $path;
+    $image_name = $request->file('image_name');
+
+    $path = Storage::disk('s3')->putFile('myprefix', $image_name, 'public');
+    // アップロードした画像のフルパスを取得
+    $image_path = Storage::disk('s3')->url($path);
+
+    $user->image_name = $image_path;
     $user->name = $request->input('name');
     $user->nickname = $request->input('nickname');
     $user->email = $request->input('email');

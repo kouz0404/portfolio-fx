@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Storage;
 
 
 use Illuminate\Auth\Events\Registered;
@@ -74,12 +75,17 @@ class RegisterController extends Controller
     {
        //画像を初期設定する場合としない場合
         if(isset($data['image_name'])){
+            $image_name = $data['image_name'];
 
-            $image_extension = request()->file('image_name')->getClientOriginalExtension();
-            $path = 'first_user_image'.'_'.date('YmdHis').'.'.$image_extension;
+           // $image_extension = request()->file('image_name')->getClientOriginalExtension();
+            //$path = 'first_user_image'.'_'.date('YmdHis').'.'.$image_extension;
 
             // 画像を"storage/app/public"に保存
-            request()->file('image_name')->storeAS('',$path,'public');
+            //request()->file('image_name')->storeAS('',$path,'public');
+
+            $path = Storage::disk('s3')->putFile('myprefix', $image_name, 'public');
+            // アップロードした画像のフルパスを取得
+            $image_path = Storage::disk('s3')->url($path);
       
 
 
@@ -87,7 +93,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'nickname' => $data['nickname'],
             'email' => $data['email'],
-            'image_name' => $path,
+            'image_name' => $image_path,
             'password' => Hash::make($data['password']),
         ]);
 

@@ -38,7 +38,7 @@
                 </div>
                 <input class="user-input" type="file">
                 <input class="user-input"  type="text" placeholder="AccountName (Taro)">
-                <input class="user-input" type="text" placeholder="nickname (taro@0101)">
+                <input class="user-input" type="text" placeholder="nickname (taro0101)">
                 <input class="user-input" type="email" placeholder="email">
                 <input class="user-input" type="password" placeholder="password">
                 <button class="login-btn" type="submit"> Make Account</button>
