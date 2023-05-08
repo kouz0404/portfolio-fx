@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Post;
 use App\Models\Like;
+use Storage;
 
 class Postcontroller extends Controller
 {
@@ -35,14 +36,18 @@ class Postcontroller extends Controller
     //画像がある場合には保存するようにifで分岐
     if($request->has('image_name')){
 
-    $image_extension = $request->file('image_name')->getClientOriginalExtension();
-    $path = $user_id.'_'.date('YmdHis').'.'.$image_extension;
-    $request->file('image_name')->storeAS('',$path,'public');
+   // $image_extension = $request->file('image_name')->getClientOriginalExtension();
+    //$path = $user_id.'_'.date('YmdHis').'.'.$image_extension;
+    //$request->file('image_name')->storeAS('',$path,'public');
+
+    $path = Storage::disk('s3')->putFile('myprefix', $image_name, 'public');
+    // アップロードした画像のフルパスを取得
+    $image_path = Storage::disk('s3')->url($path);
 
     Post::insert(
         [
            "body" => $body,
-           "image_name" => $path,
+           "image_name" => $image_path,
            "user_id" => $user_id,
            'created_at' => now(),
            'updated_at' => now()
